@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMRECK</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>EmreckServices</h1>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Welcome!</h2>
+            <p>
+                <strong>Looking for high-quality templates or reliable digital services?</strong><br>
+                <span style="color:#00c8ff;">You’re in the right place!</span>
+            </p>
+            <ul style="list-style: none; padding: 0; margin: 1em 0;">
+                <li>✔️ <b>Custom Templates</b> for presentations, videos, and more</li>
+                <li>✔️ <b>Professional Video Editing</b> for all your needs</li>
+                <li>✔️ <b>Motion Graphics & Visual Effects</b> (Adobe After Effects expert)</li>
+            </ul>
+            <p>
+                <em>
+                    I specialize in advanced motion graphics and visual effects,<br>
+                    delivering polished results for every project.
+                </em>
+            </p>
+            <p>
+                <a href="https://www.raket.ph/emereckiii" target="_blank" class="cta-link">
+                    Check out my products and services today!
+                </a>
+            </p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 EmreckServices</p>
+    </footer>
+    <div class="music-player">
+        <audio id="lofi-audio" src="BG MUSIC.mp3" autoplay loop muted></audio>
+        <button id="play-pause" aria-label="Play/Pause"></button>
+        <span class="music-title">Cozy Lofi Beats</span>
+        <input type="range" id="volume" min="0" max="1" step="0.01" value="0.5" aria-label="Volume">
+    </div>
+    <div class="typewriter-container">
+        <span class="typewriter-label">I'm a&nbsp;</span>
+        <span id="typewriter"></span>
+    </div>
+    <script>
+const audio = document.getElementById('lofi-audio');
+const playPause = document.getElementById('play-pause');
+const volume = document.getElementById('volume');
+
+// Set initial state
+audio.volume = volume.value;
+audio.muted = true;
+
+// Update play/pause button icon by toggling the 'playing' class
+function updateButton() {
+    if (audio.paused) {
+        playPause.classList.remove('playing');
+    } else {
+        playPause.classList.add('playing');
+    }
+}
+
+// Play/Pause toggle and unmute on play
+playPause.addEventListener('click', () => {
+    if (audio.paused) {
+        audio.muted = false;
+        audio.play();
+    } else {
+        audio.pause();
+    }
+    updateButton();
+});
+audio.addEventListener('play', updateButton);
+audio.addEventListener('pause', updateButton);
+
+// Volume control
+volume.addEventListener('input', () => {
+    audio.volume = volume.value;
+});
+
+// Initialize button icon
+updateButton();
+</script>
+<script>
+const roles = [
+  "VIDEO EDITOR",
+  "GRAPHIC DESIGNER",
+  "WEB DEVELOPER",
+  "MOTION GRAPHICS ARTIST",
+];
+const typewriter = document.getElementById('typewriter');
+let roleIndex = 0;
+let charIndex = 0;
+let typing = true;
+
+function typeRole() {
+  const currentRole = roles[roleIndex];
+  if (typing) {
+    if (charIndex < currentRole.length) {
+      typewriter.textContent += currentRole.charAt(charIndex);
+      charIndex++;
+      setTimeout(typeRole, 60);
+    } else {
+      typing = false;
+      setTimeout(typeRole, 2000); // Pause before erasing
+    }
+  } else {
+    if (charIndex > 0) {
+      typewriter.textContent = currentRole.substring(0, charIndex - 1);
+      charIndex--;
+      setTimeout(typeRole, 30);
+    } else {
+      typing = true;
+      roleIndex = (roleIndex + 1) % roles.length;
+      setTimeout(typeRole, 500); // Pause before typing next
+    }
+  }
+}
+typeRole();
+</script>
+</body>
+</html>
