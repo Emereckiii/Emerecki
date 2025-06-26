@@ -6,24 +6,37 @@
 
 body {
     font-family: Arial, sans-serif;
-    font-size: 30px;
+    font-size: 18px; /* Use a base size that scales well */
     background: url('BACKGROUND.gif') center center no-repeat;
     background-size: cover;
     color: #ffffff;
     min-height: 100vh;
+    margin: 0;
+}
+
+header, footer, main, .music-player, .typewriter-container {
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 header {
     background: linear-gradient(135deg, rgba(16,20,54,0.95) 60%, rgba(255,255,255,0.15) 100%);
     color: #fff;
-    padding: 20px 0;
+    padding: 12px 4vw;
     text-align: center;
     box-shadow: 0 2px 12px rgba(0,0,0,0.15),
                 0 0 20px 4px rgba(0, 200, 255, 0.4); /* Glow effect */
     backdrop-filter: blur(2px);
     border: 2px solid rgba(0, 200, 255, 0.3);        /* Light border */
-    border-radius: 16px;                             /* Optional: rounded corners */
-    margin: 16px 32px 0 32px;                        /* Optional: spacing from edges */
+    border-radius: 12px;                             /* Optional: rounded corners */
+    margin: 8px 8px 0 8px;                        /* Optional: spacing from edges */
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
 }
 
 nav a, button {
@@ -33,6 +46,8 @@ nav a, button {
     font-weight: bold;
     transition: transform 0.2s, box-shadow 0.2s;
     display: inline-block;
+    font-size: 1em;
+    padding: 6px 12px;
 }
 
 nav a:hover,
@@ -50,8 +65,8 @@ button:active {
 }
 
 main {
-    padding: 40px 20px;
-    max-width: 800px;
+    padding: 24px 4vw;
+    max-width: 900px;
     margin: 0 auto;
 }
 
@@ -67,12 +82,14 @@ footer {
     background: linear-gradient(135deg, rgba(16,20,54,0.95) 60%, rgba(255,255,255,0.15) 100%);
     color: #fff;
     text-align: center;
-    padding: 15px 0;
+    padding: 12px 4vw;
     position: fixed;
     width: 100%;
     bottom: 0;
     backdrop-filter: blur(2px);
     box-shadow: 0 -2px 12px rgba(0,0,0,0.15);
+    margin: 8px 8px 0 8px;
+    border-radius: 12px;
 }
 
 .cta-link {
@@ -97,8 +114,9 @@ footer {
 
 .music-player {
     position: fixed;
-    bottom: 80px;
-    right: 30px;
+    bottom: 16px;
+    right: 16px;
+    left: auto;
     z-index: 100;
     background: rgba(16, 20, 54, 0.85);
     border: 2px solid #00c8ff;
@@ -106,9 +124,10 @@ footer {
     box-shadow: 0 4px 24px rgba(0,200,255,0.15), 0 0 12px #00c8ff;
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 12px 20px;
+    gap: 10px;
+    padding: 10px 14px;
     backdrop-filter: blur(4px);
+    max-width: 95vw;
 }
 
 .music-player .music-title {
@@ -161,11 +180,12 @@ footer {
     min-height: 2.5em;
     margin: 30px 0 20px 0;
     width: 100%;
+    flex-wrap: wrap;
 }
 
 .typewriter-label,
 #typewriter {
-    font-size: 2.2em;
+    font-size: 2em;
     color: #7ce0ff;
     font-weight: bold;
     letter-spacing: 1px;
@@ -176,4 +196,52 @@ footer {
     overflow: hidden;
     text-shadow: none;
     text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 700px) {
+    header, footer {
+        margin: 6px 2vw 0 2vw;
+        padding: 10px 2vw;
+        border-radius: 10px;
+    }
+    main {
+        padding: 16px 2vw;
+    }
+    .music-player {
+        bottom: 10px;
+        right: 10px;
+        padding: 8px 8px;
+        font-size: 0.95em;
+    }
+    .typewriter-label,
+    #typewriter {
+        font-size: 1.2em;
+    }
+}
+
+@media (max-width: 480px) {
+    header, footer {
+        margin: 2px 1vw 0 1vw;
+        padding: 8px 1vw;
+        border-radius: 8px;
+    }
+    main {
+        padding: 8px 1vw;
+    }
+    nav a, button {
+        font-size: 0.95em;
+        padding: 4px 8px;
+    }
+    .music-player {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+        padding: 6px 6px;
+        font-size: 0.9em;
+    }
+    .typewriter-label,
+    #typewriter {
+        font-size: 1em;
+    }
 }
